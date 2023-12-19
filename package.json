@@ -1,35 +1,43 @@
 {
 	"name": "app-name",
 	"productName": "App Name",
-	"version": "0.0.0",
+	"version": "0.0.2",
 	"description": "The best app ever",
 	"license": "MIT",
-	"repository": "sindresorhus/electron-boilerplate",
+	"repository": "https://github.com/mscorpres/eletest",
+	"publish" : {
+		"provider": "github",
+		"releaseType" : "release"		
+	},
 	"author": {
-		"name": "Your Name",
-		"email": "user@gmail.com",
-		"url": "https://sindresorhus.com"
+		"name": "Your Name"
 	},
 	"scripts": {
 		"postinstall": "electron-builder install-app-deps",
 		"lint": "xo",
 		"test": "npm run lint",
 		"start": "electron .",
-		"pack": "electron-builder --dir",
-		"dist": "electron-builder --macos --linux --windows",
-		"release": "np"
+		"pack": "electron-builder",
+		"dist": "electron-builder --windows",
+		"release": "np",
+		"watch": "nodemon --exec electron ."
 	},
 	"dependencies": {
+		"axios": "^1.6.2",
 		"electron-context-menu": "^3.4.0",
 		"electron-debug": "^3.2.0",
 		"electron-store": "^8.1.0",
 		"electron-unhandled": "^4.0.1",
 		"electron-updater": "^5.2.1",
-		"electron-util": "^0.17.2"
+		"electron-util": "^0.17.2",
+		"mysql2": "^3.6.5",
+		"sequelize": "^6.35.1",
+		"socket.io-client": "^4.7.2"
 	},
 	"devDependencies": {
 		"electron": "^13.0.0",
 		"electron-builder": "^23.3.3",
+		"nodemon": "^2.0.22",
 		"np": "^7.6.2",
 		"xo": "^0.51.0"
 	},
@@ -48,6 +56,15 @@
 	},
 	"build": {
 		"appId": "com.company.AppName",
+		"productName": "App Name",
+		"win" : {
+			"target": [
+				"nsis"
+			]
+		},
+		"directories": {
+			"output": "dist"
+		},
 		"mac": {
 			"category": "public.app-category.social-networking",
 			"darkModeSupport": true
