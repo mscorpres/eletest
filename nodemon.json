@@ -2,5 +2,5 @@
     "ignore": [
         "userdata/"
     ],
-    "ext": "js,json,html"
+    "ext": "js,json,html,ejs"
 }

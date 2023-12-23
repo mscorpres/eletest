@@ -15,11 +15,11 @@ contextBridge.exposeInMainWorld('electron', {
   }
 })
 
-const db = require('./dbConfig.js');
-db.db.query("SELECT 1 + 1 AS solution", function (err, results, fields) {
-  if (err) throw err;
-  // console.log('The solution is: ', results[0].solution);
-});
+// const db = require('./dbConfig.js');
+// db.db.query("SELECT 1 + 1 AS solution", function (err, results, fields) {
+//   if (err) throw err;
+//   // console.log('The solution is: ', results[0].solution);
+// });
 
 const socket = io(`http://localhost:${process.env.SOCKET_PORT}`);
 
