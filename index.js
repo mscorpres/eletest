@@ -7,7 +7,7 @@ const unhandled = require('electron-unhandled');
 const debug = require('electron-debug');
 const contextMenu = require('electron-context-menu');
 const config = require('./config.js');
-const menu = require('./menu.js');
+const menu = require('./utils/menu.js');
 const axios = require('axios');
 
 const ejse = require('ejs-electron')
