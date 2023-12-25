@@ -1,13 +1,16 @@
 const { contextBridge ,ipcRenderer  } = require('electron');
 const io = require('socket.io-client');
 
+
+
 contextBridge.exposeInMainWorld('electron', {
   socket: () => {
     return io(`http://localhost:${process.env.SOCKET_PORT}`);
   },
   ipcRenderer : {
     send: (channel, data) => {
-      ipcRenderer.send(channel, data)
+      ipcRenderer.send(channel, data);
+      console.log('on send : send received renderer');
     },
     on: (channel, func) => {
       ipcRenderer.on(channel, (event, ...args) => func(...args))
@@ -37,5 +40,8 @@ socket.on('connect', () => {
   // console.log("connected renderer"); // displayed
   socket.emit('test');
 });
+
+
+// 
 
 console.log("Preload");

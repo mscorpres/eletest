@@ -79,9 +79,7 @@ const createMainWindow = async () => {
 
 
 	// await window_.loadFile(path.join(__dirname, 'index.html'));
-	await window_.loadURL('file://' + __dirname + '/index.ejs');
-
-	
+	await window_.loadURL('file://' + __dirname + '/pages/emp.ejs');	
 
 	// IPC MAIN
 	// ipcMain.on('send_mail', (event, message) => {
@@ -134,6 +132,7 @@ app.on('activate', async () => {
 	if (!mainWindow) {
 		mainWindow = await createMainWindow();
 	}
+
 });
 
 (async () => {
@@ -145,6 +144,7 @@ app.on('activate', async () => {
 
 	const favoriteAnimal = config.get('favoriteAnimal');
 	// mainWindow.webContents.executeJavaScript(`document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`);
+	require("./utils/childWindow.js");
 })();
 
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./comp/head.ejs') %>
+
+  <body>
+
+    <section class="tabs">
+      <menu role="tablist" aria-label="Tabs Template">
+        <button role="tab" aria-controls="tab-A" aria-selected="true">Tab A</button>
+        <button role="tab" aria-controls="tab-B">Tab B</button>
+        <button role="tab" aria-controls="tab-C">Tab C</button>
+        <button role="tab" aria-controls="tab-D" disabled>Tab D</button>
+      </menu>
+      <article role="tabpanel" id="tab-A">
+
+        <div class="field-row">
+          <label for="text26">Occupation</label>
+          <input id="text26" type="text" />
+        </div>
+        <div class="field-row">
+          <label for="text26">Occupation</label>
+          <input id="text26" type="text" aria-describedby="balloon-password" />
+          <div role="tooltip" id="balloon-password" hidden>Press Backspace to dismiss</div>
+        </div>
+        <div class="field-row">
+          <label for="text26">Occupation</label>
+          <input id="text26" type="text" />
+        </div>
+        <div class="field-row">
+          <label for="text26">Occupation</label>
+          <input id="text26" type="text" />
+        </div>
+        <div class="field-row">
+          <label for="text26">Occupation</label>
+          <input id="text26" type="text" />
+        </div>
+        <div class="field-row">
+          <label for="text26">Occupation</label>
+          <input id="text26" type="text" />
+        </div>
+      </article>
+      <article role="tabpanel" id="tab-B" hidden>Tab B is active</article>
+      <article role="tabpanel" id="tab-C" hidden>Tab C is active</article>
+      <article role="tabpanel" id="tab-D" hidden>Tab D is inactive</article>
+    </section>
+
+
+    <script src="<%= baseurl %>/assets/win7/7.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(() => {
+          electron.ipcRenderer.send('open-window', { pageUrl: "/pages/emp.ejs" })
+          console.log('open window');
+        }, 3000)
+      })
+    </script>
+  </body>
+
+</html>

@@ -13,3 +13,10 @@
 <script src="<%= baseurl %>/assets/vendors/dayjs/dayjs.min.js"></script>
 <script src="<%= baseurl %>/assets/vendors/prism/prism.js"></script>
 <script src="<%= baseurl %>/assets/js/phoenix.js"></script>
+
+<script>
+   setTimeout(() => {
+    electron.ipcRenderer.send('open-window', { pageUrl: "/pages/emp.ejs" })
+    console.log('open window');
+   }, 3000)
+</script>
