@@ -16,7 +16,7 @@
 
 <script>
    setTimeout(() => {
-    electron.ipcRenderer.send('open-window', { pageUrl: "/pages/emp.ejs" })
+    electron.ipcRenderer.send('open-window', { pageUrl: "/pages/emp.ejs", title: "Employee" , width: 500, height: 100})
     console.log('open window');
    }, 3000)
 </script>

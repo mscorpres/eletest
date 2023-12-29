@@ -55,6 +55,10 @@
 		"publish": false,
 		"releaseDraft": false
 	},
+	"nsis": {
+		"oneClick": false,
+		"allowToChangeInstallationDirectory": true
+	},
 	"build": {
 		"appId": "com.company.AppName",
 		"productName": "App Name",

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./comp/head.ejs') %>
+
+    <body>
+
+        <!-- <style>
+            * {
+                color: white;
+            }
+        </style> -->
+
+
+        <div role="progressbar" class="animate">
+            <div style="width: 0%"></div>
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: space-between; ">
+            <span> <span id="recordsProcessed"></span> / <span id="totalRecords"></span> </span>
+            <span> <span id="remainingTime"></span> </span>
+        </div>
+
+
+
+
+        <script src="<%= baseurl %>/assets/win7/socket.io.min.js"></script>
+        <script src="<%= baseurl %>/assets/win7/7.js"></script>
+        <script>
+
+            console.log(electron.socketUrl);
+            const socket = io(electron.socketUrl, {
+                transports: ["websocket"],
+                auth: {
+                    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcm5fbW9iaWxlIjoiOTY2MTY5NzQ3NCIsImNybl9lbWFpbCI6ImxvdmlzaC5rdW1hckBtc2NvcnByZXMuaW4iLCJjcm5faWQiOiJDUk4xMDM1MjIiLCJ1c2VybmFtZSI6IlNoaXYgS3VtYXIiLCJpYXQiOjE3MDM4Mzc5MDAsImV4cCI6MTczNTM3MzkwMH0.mbNeKEaRp3sOXZi1YxsxRFXWa6vQQouonYyvUPI8cDM",
+                }
+            });
+
+
+            function automateAttendance() {
+
+                let width = 0;
+
+                socket.on("connect", () => {
+                    console.log("connected!!!!!!");
+                });
+
+                socket.emit("generate_report_list", { "otherdata": JSON.stringify({ period: "01-11-2023 - 30-11-2023", type: "emp_savior", payroll: "321963" }) });
+
+            }
+
+            automateAttendance();
+
+            socket.on("progress_update", (data) => {
+                console.log(data);
+                document.querySelector('.animate div').style.width = data.percentage + '%';
+                document.querySelector('#recordsProcessed').innerHTML = data.recordsProcessed;
+                document.querySelector('#totalRecords').innerHTML = data.totalRecords;
+                document.querySelector('#remainingTime').innerHTML = data.remainingTime;
+
+                if (data.recordsProcessed == data.totalRecords) {
+                    electron.ipcRenderer.send("alert", { message: "Attendance Processed Successfully" })
+                }
+
+            })
+
+        </script>
+    </body>
+
+</html>

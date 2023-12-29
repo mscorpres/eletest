@@ -39,20 +39,34 @@
           <input id="text26" type="text" />
         </div>
       </article>
-      <article role="tabpanel" id="tab-B" hidden>Tab B is active</article>
+
+
+      <article role="tabpanel" id="tab-B" hidden>
+        <button onclick="automateAttendance(this , event)">Generate Attendance</button>
+
+        <br><br>
+
+        <button onclick="openEmpReg(this , event)">Register Employee</button>
+      </article>
+
+
       <article role="tabpanel" id="tab-C" hidden>Tab C is active</article>
+
+
       <article role="tabpanel" id="tab-D" hidden>Tab D is inactive</article>
     </section>
 
 
     <script src="<%= baseurl %>/assets/win7/7.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        setTimeout(() => {
-          electron.ipcRenderer.send('open-window', { pageUrl: "/pages/emp.ejs" })
-          console.log('open window');
-        }, 3000)
-      })
+
+      function automateAttendance() {
+        electron.ipcRenderer.send('open-window', { pageUrl: "/pages/attendance.ejs", title: "Employee" , width: 500, height: 100 })
+      }
+      function openEmpReg() {
+        electron.ipcRenderer.send('open-window', { pageUrl: "/pages/empReg.ejs", title: "Employee Registration" , width: 800, height: 600 })
+      }
+
     </script>
   </body>
 

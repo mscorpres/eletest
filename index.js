@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const { app, BrowserWindow, Menu, dialog, ipcMain , screen  } = require('electron');
+const { app, BrowserWindow, Menu, dialog, ipcMain, screen } = require('electron');
 /// const {autoUpdater} = require('electron-updater');
 const { is } = require('electron-util');
 const unhandled = require('electron-unhandled');
@@ -24,7 +24,7 @@ unhandled();
 // debug();
 contextMenu();
 
-process.env.SOCKET_PORT = 18092;
+process.env.SOCKET_PORT = 5001;
 
 // Note: Must match `build.appId` in package.json
 app.setAppUserModelId('com.company.AppName');
@@ -79,7 +79,16 @@ const createMainWindow = async () => {
 
 
 	// await window_.loadFile(path.join(__dirname, 'index.html'));
-	await window_.loadURL('file://' + __dirname + '/pages/emp.ejs');	
+	await window_.loadURL('file://' + __dirname + '/pages/emp.ejs');
+
+	ipcMain.on('alert', (event, message) => {
+		const result = dialog.showMessageBoxSync({
+			title: message.title ?? "Hii",
+			type: 'info',
+			// buttons: ['OK'],
+			detail : message.message,
+		});
+	})
 
 	// IPC MAIN
 	// ipcMain.on('send_mail', (event, message) => {
@@ -109,7 +118,7 @@ if (!app.requestSingleInstanceLock()) {
 	app.quit();
 }
 app.on('before-quit', () => {
-	
+
 })
 
 app.on('second-instance', () => {

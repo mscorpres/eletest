@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Employee Registration</title>
+        <style>
+            div {
+                padding: 3px;
+            }
+
+            label {
+                display: inline-block;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            select,
+            input[type="checkbox"] {
+                width: 100%;
+            }
+        </style>
+
+        <%- include('./comp/head.ejs') %>
+    </head>
+
+    <body style="overflow-x: hidden !important; background-color: #f0f0f0;">
+        <div class="bootstrap-wrapper">
+            <div class="row container">
+                <div class="col-md-7">
+                    <fieldset>
+                        <legend>Payroll Information</legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="payroll">Payroll:</label>
+                                </td>
+                                <td>
+                                    <select>
+                                        <option>5 - Incredible!</option>
+                                        <option>4 - Great!</option>
+                                        <option selected>3 - Pretty good</option>
+                                        <option>2 - Not so great</option>
+                                        <option>1 - Unfortunate</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="branch">Branch:</label>
+                                </td>
+                                <td>
+                                    <select>
+                                        <option>5 - Incredible!</option>
+                                        <option>4 - Great!</option>
+                                        <option selected>3 - Pretty good</option>
+                                        <option>2 - Not so great</option>
+                                        <option>1 - Unfortunate</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+                <div class="col-md-5">
+                    hello
+                </div>
+            </div>
+            <div class="row container">
+                <div class="col-md-7">
+                    <fieldset>
+                        <legend>Employee Information</legend>
+                        <table>
+                            <tr>
+                                <td colspan="2">
+                                    <label for="firstname">First Name</label>
+                                    <input type="text" id="firstname" />
+                                </td>
+                                <td colspan="2">
+                                    <label for="lasttname">Last Name</label>
+                                    <input type="text" id="lasttname" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    DOB :
+                                </td>
+                                <td>
+                                    <input type="text" id="dob" name="dob" placeholder="DD-MM-YYYY" autocomplete="off" />
+                                </td>
+                                <td>
+                                    DOJ :
+                                </td>
+                                <td>
+                                    <input type="text" id="doj" name="doj" placeholder="DD-MM-YYYY" autocomplete="off" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Gender :
+                                </td>
+                                <td>
+                                    <select>
+                                        <option value="M" selected>Male</option>
+                                        <option value="F">Female</option>
+                                        <option value="O">Other</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Collar :
+                                </td>
+                                <td>
+                                    <select>
+                                        <option value="BC" selected>Blue Collar</option>
+                                        <option value="GC">Grey Collar</option>
+                                        <option value="WC">White Collar</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%; margin-top: 15px;">
+                            <tr>
+                                <td>
+                                    <label for="firstname">Unique Identification UID :</label>
+                                    <input type="text" id="uid" name="uid" placeholder="XXXX XXXX XXXX" autocomplete="off" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <blockquote style="background: #fffeed; padding: 10px; margin: 0; border: 1px solid #ccc;">Make sure that the Unique Identification UID is not registered in our records before.</blockquote>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-12">
+                        <fieldset>
+                            <legend>ESS and Policy</legend>
+                            <div class="raw">
+                                <table>
+                                    <tr>
+                                        <td><input type="checkbox" id="ess" /><label for="ess">allow employee to access ESS portal</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" id="leave" /><label for="leave">employee will able to apply leave on ESS portal</label></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="raw">
+                                <label for="mobile1">Mobile Number :</label>
+                                <input type="text" id="mobile1" name="mobile" />
+
+                                <label for="mobile2">Confirm Mobile Number :</label>
+                                <input type="text" id="mobile2" name="mobile" />
+                            </div>
+                            <br />
+                            <div class="raw">
+                                <label for="email">Email Address :</label>
+                                <input type="text" id="email" name="email" aria-describedby="balloon-password"/>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form></form>
+        <script>
+           
+        </script>
+    </body>
+</html>
