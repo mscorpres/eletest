@@ -57,17 +57,21 @@
     </section>
 
 
-    <script src="<%= baseurl %>/assets/win7/7.js"></script>
-    <script>
+    <%- include('./comp/script.ejs') %>
+      <script>
 
-      function automateAttendance() {
-        electron.ipcRenderer.send('open-window', { pageUrl: "/pages/attendance.ejs", title: "Employee" , width: 500, height: 100 })
-      }
-      function openEmpReg() {
-        electron.ipcRenderer.send('open-window', { pageUrl: "/pages/empReg.ejs", title: "Employee Registration" , width: 800, height: 600 })
-      }
+        $(document).ready(function () {
+          // alert("hello");
+        });
 
-    </script>
+        function automateAttendance() {
+          electron.ipcRenderer.send('open-window', { pageUrl: "/pages/attendance.ejs", title: "Employee", width: 500, height: 100 })
+        }
+        function openEmpReg() {
+          electron.ipcRenderer.send('open-window', { pageUrl: "/pages/empReg.ejs", title: "Employee Registration", width: 800, height: 600 })
+        }
+
+      </script>
   </body>
 
 </html>

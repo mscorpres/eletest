@@ -22,12 +22,26 @@
                         <div class="parent-wrapper label-1">
                             <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
                                 <li class="collapsed-nav-item-title d-none">Home</li>
-                                <li class="nav-item"><a class="nav-link" href="<%= baseurl %>/pages/addEmp.ejs" data-bs-toggle=""
+                                <li class="nav-item"><a class="nav-link" href="javascript:void(0)"
+                                        onclick="openChildWindow('/pages/empReg.ejs')" data-bs-toggle=""
                                         aria-expanded="false">
-                                        <div class="d-flex align-items-center"><span class="nav-link-text">Addd EMP</span></div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="nav-link-text">
+                                                Add EMP
+                                            </span>
+                                        </div>
                                     </a><!-- more inner pages-->
                                 </li>
-                               
+                                <li class="nav-item"><a class="nav-link" href="<%= baseurl %>/pagesX/addEmp.ejs" data-bs-toggle=""
+                                    aria-expanded="false">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-text">
+                                            Add EMP
+                                        </span>
+                                    </div>
+                                </a><!-- more inner pages-->
+                            </li>
+
                             </ul>
                         </div>
                     </div>
@@ -64,7 +78,7 @@
                                                             class="nav-link-text">Add product</span>
                                                     </div>
                                                 </a><!-- more inner pages-->
-                                            </li>                                            
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -94,15 +108,15 @@
                                                     </div>
                                                 </a><!-- more inner pages-->
                                             </li>
-                                           
+
                                         </ul>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                     </div><!-- parent pages-->
-                    
-                    
+
+
                     <div class="nav-item-wrapper"><a class="nav-link label-1" href="../apps/calendar.html" role="button"
                             data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center"><span class="nav-link-icon"><span

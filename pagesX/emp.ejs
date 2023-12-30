@@ -6,107 +6,107 @@
     <body>
 
         <main class="main" id="top">
+            <%- include('./comp/sidebar.ejs') %>
+                <%- include('./comp/navbar.ejs') %>
 
-            <div class="content">
-                <div class="d-flex">
+                    <div class="content">
+                        <div class="d-flex">
 
-                    <div class="card">
-                        <div class="card-header p-2">
-                            <div class="d-flex flex-between-center">
-                                <h5 class="mb-0">Add New EMPLOYEE</h5>
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="d-flex flex-between-center">
+                                        <h5 class="mb-0">Add New EMPLOYEE</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="firstname">First name</label>
+                                            <input name="fname" class="form-control" id="firstname" type="text"
+                                                placeholder="First name" />
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="lastname">Last name</label>
+                                            <input name="lname" class="form-control" id="lastname" type="text"
+                                                placeholder="Last name" />
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="mobileno">Mobile No</label>
+                                            <input name="mobno" class="form-control" id="mobileno" type="text"
+                                                placeholder="Mobile No" />
+                                        </div>
+
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="confirmmobno">Confirm Mob No</label>
+                                            <input name="conmobno" class="form-control" id="confirmmobno" type="text"
+                                                placeholder="Confirm Mob. No." />
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="dob">Date of Birth</label>
+                                            <input name="dob" class="form-control" id="dob" type="date"
+                                                placeholder="Date of Birth" />
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="doj">Date of Joining</label>
+                                            <input name="doj" class="form-control" id="doj" type="date"
+                                                placeholder="Date of Joining" />
+                                        </div>
+                                        <!-- SELECT CONTRACTOR -->
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="contractor">Contractor</label>
+                                            <select class="form-select form-select-sm"
+                                                aria-label=".form-select-sm example">
+                                                <option selected="">Open this select menu</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="contractor">Join Status</label>
+                                            <select class="form-select form-select-sm"
+                                                aria-label=".form-select-sm example">
+                                                <option selected="">Open this select menu</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <label class="form-label" for="adharno">Adhaar No</label>
+                                            <input name="adhaarno" class="form-control" id="adharno" type="text"
+                                                placeholder="Adhaar No" />
+                                        </div>
+
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <button class="btn btn-phoenix-success me-1 mb-1 mt-4"
+                                                type="button">
+                                                <span class="fas fa-save me-2"
+                                                    data-fa-transform="shrink-3"></span>
+                                                Icon Left
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
-                        <div class="card-body p-1">
-
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="firstname">First name</label>
-                                    <input name="fname" class="form-control form-control-sm" id="firstname" type="text"
-                                        placeholder="First name" />
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="lastname">Last name</label>
-                                    <input name="lname" class="form-control form-control-sm" id="lastname" type="text"
-                                        placeholder="Last name" />
-                                </div>
-
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="mobileno">Mobile No</label>
-                                    <input name="mobno" class="form-control form-control-sm" id="mobileno" type="text"
-                                        placeholder="Mobile No" />
-                                </div>
 
 
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="confirmmobno">Confirm Mob No</label>
-                                    <input name="conmobno" class="form-control form-control-sm" id="confirmmobno" type="text"
-                                        placeholder="Confirm Mob. No." />
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="dob">Date of Birth</label>
-                                    <input name="dob" class="form-control form-control-sm" id="dob" type="date"
-                                        placeholder="Date of Birth" />
-                                </div>
-
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="doj">Date of Joining</label>
-                                    <input name="doj" class="form-control form-control-sm" id="doj" type="date"
-                                        placeholder="Date of Joining" />
-                                </div>
-                                <!-- SELECT CONTRACTOR -->
-
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="contractor">Contractor</label>
-                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                        <option selected="">Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="contractor">Join Status</label>
-                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                        <option selected="">Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6 col-sm-12">
-                                    <label class="form-label" for="adharno">Adhaar No</label>
-                                    <input name="adhaarno" class="form-control form-control-sm" id="adharno" type="text"
-                                        placeholder="Adhaar No" />
-                                </div>
-
-
-                                <div class="col-md-6 col-sm-12">
-                                    <button class="btn btn-phoenix-success me-1 mb-1 mt-4" type="button">
-                                        <span class="fas fa-save me-2" data-fa-transform="shrink-3"></span>
-                                        Icon Left
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
+                        <%- include('./comp/footer.ejs') %>
                     </div>
 
-                </div>
 
 
-                <%- include('./comp/footer.ejs') %>
-            </div>
-
-
-
-            <%- include('./comp/other.ejs') %>
+                    <%- include('./comp/other.ejs') %>
         </main>
 
 

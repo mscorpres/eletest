@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<%- include('./comp/head.ejs') %>
+
+    <body>
+
+        <main class="main" id="top">
+            <%- include('./comp/sidebar.ejs') %>
+                <%- include('./comp/navbar.ejs') %>
+
+                    <div class="content">
+                        <div class="d-flex">
+
+                            <h1>Admin</h1>
+
+                        </div>
+
+
+                        <%- include('./comp/footer.ejs') %>
+                    </div>
+
+
+
+                    <%- include('./comp/other.ejs') %>
+        </main>
+
+
+        <!-- <script src="./renderer.js"></script> -->
+        <%- include('./comp/scripts.ejs') %>
+    </body>
+
+</html>

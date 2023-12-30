@@ -48,6 +48,11 @@ const createMainWindow = async () => {
 			enableRemoteModule: false, // turn off remote
 			preload: path.join(__dirname, 'preload.js'),
 		},
+		// transparent: true,
+		// frame: false,
+		// alwaysOnTop: true,
+		// skipTaskbar: true,
+		// fullscreen: true,
 	});
 
 	window_.on('ready-to-show', () => {
@@ -79,7 +84,7 @@ const createMainWindow = async () => {
 
 
 	// await window_.loadFile(path.join(__dirname, 'index.html'));
-	await window_.loadURL('file://' + __dirname + '/pages/emp.ejs');
+	await window_.loadURL('file://' + __dirname + '/pagesX/login.ejs');
 
 	ipcMain.on('alert', (event, message) => {
 		const result = dialog.showMessageBoxSync({

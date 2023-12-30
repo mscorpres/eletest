@@ -15,8 +15,10 @@
 <script src="<%= baseurl %>/assets/js/phoenix.js"></script>
 
 <script>
-   setTimeout(() => {
-    electron.ipcRenderer.send('open-window', { pageUrl: "/pages/emp.ejs", title: "Employee" , width: 500, height: 100})
-    console.log('open window');
-   }, 3000)
+
+   function openChildWindow(url = null, title = "", width = null, height = null) {
+      if (url == null) return;
+      electron.ipcRenderer.send('open-window', { pageUrl: url, title: title, width: width, height: height })
+   }
+
 </script>

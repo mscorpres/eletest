@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        ;
+    </style>
+</head>
+
+<body class="bg-dark" id="hide1">
+    <div style="width: 60%;margin: auto;height: 90vh;" class="mt-4 d-flex" id="hide2">
+        <div style="width: 35%;text-align: center;" class="bg-primary text-white ">
+            <div style="height: 30vh;" class="d-flex justify-content-center align-items-center">
+                <span class="material-symbols-outlined" style="font-size: 18vh;">
+                    settings_slow_motion
+                </span>
+            </div>
+            <div style="height: 30vh;" class="d-flex justify-content-center  align-items-center mr-4 p-1 text-right ">
+                <p style="font-size: 1.8rem;">Welcome to the service management system</p>
+            </div>
+            <div style="height: 29vh;padding-top:100px;padding-right:10px;" class="text-right mr-3">
+                <p>discovered by <br> code galaxy tech</p>
+            </div>
+        </div>
+
+
+        <div class="w-65 bg-light text-primary">
+            <div style="text-align: end;cursor: pointer;" class="p-1" onclick="closepage()">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </div>
+            <form action="">
+                <div
+                    style="margin: auto;display: flex;flex-direction: column;justify-content: center;align-items: center;height: 70vh;">
+                    <div style="color:rgb(68, 111, 154)" class="mr-5">
+                        <h2>Login to your account</h2>
+                    </div>
+                    <div style="width: 90%;">
+                        <div>
+                            <label for="username"></label>
+                        </div>
+                        <div class=" " style="position: relative;">
+                            <input type="text" class="form-control" id="username" name="username"
+                                style="padding-left: 6%;" placeholder="Enter UserID">
+                            <span class="material-symbols-outlined" style="position: absolute;top: 8px;
+                            left: 8px;">
+                                person
+                            </span>
+
+                            </input>
+                        </div>
+                    </div>
+                    <div class="form-group" style="width: 90%;">
+                        <div>
+                            <label for="Password"></label>
+                        </div>
+                        <div style="position: relative;">
+                            <input type="text" id="Password" class="form-control" name="Password"
+                                style="padding-left: 6%;" placeholder="Enter Password">
+                            <span class="material-symbols-outlined" style="position: absolute;top: 8px;
+                            left: 8px;">
+                                lock
+                            </span>
+                            </input>
+                        </div>
+                    </div>
+                    <div
+                        style="width: 60%;margin-left: -170px;display: flex;justify-content: space-between;color:rgb(68, 111, 154)">
+                        <button style="width: 50%;" class="btn btn-primary  border">Login</button>
+                        <button style="width: 50%;" class="btn btn-light">Forget Password</button>
+                    </div>
+                </div>
+                <div style="height: 15vh;box-sizing: border-box;color: grey;font-size: 90%;" class="pl-5">
+                    <p>Lorem. <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, in? <br> Lorem
+                        ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, quo beatae.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        function closepage() {
+            $('#hide1').hide();
+        }
+    </script>
+</body>
+
+</html>
