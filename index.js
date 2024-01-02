@@ -9,9 +9,13 @@ const contextMenu = require('electron-context-menu');
 const config = require('./config.js');
 const menu = require('./utils/menu.js');
 const axios = require('axios');
+const Store = require('electron-store');
+const store = new Store();
+require('./utils/helper.js');
 
 const ejse = require('ejs-electron')
 ejse.data('baseurl', 'file://' + __dirname)
+ejse.data('hrmsApi', "http://localhost:3001")
 
 
 const { autoUpdater, AppUpdater } = require("electron-updater");
@@ -55,25 +59,12 @@ const createMainWindow = async () => {
 		// fullscreen: true,
 	});
 
+	const ses = window_.webContents.session;
+
+	console.log("sess", ses.getUserAgent());
+
 	window_.on('ready-to-show', () => {
 		window_.show();
-		// dialog.showOpenDialogSync({
-		// 	properties : ['openFile' ,]
-		// })
-		// const result = dialog.showMessageBoxSync({
-		// 	title: 'Electron',
-		// 	type: 'question',
-		// 	buttons: ['Yes', 'No'],
-		// 	message: 'Are you sure?',
-		// 	defaultId: 0,
-		// 	cancelId: 1,
-		// 	noLink: true,
-		// 	checkboxLabel: 'Remember my answer',
-		// 	checkboxChecked: true
-		// });
-
-		// console.log(result);
-
 	});
 
 	window_.on('closed', () => {
@@ -84,14 +75,20 @@ const createMainWindow = async () => {
 
 
 	// await window_.loadFile(path.join(__dirname, 'index.html'));
-	await window_.loadURL('file://' + __dirname + '/pagesX/login.ejs');
+
+	if (store.get('isLogin') === true) {
+		await window_.loadURL('file://' + __dirname + '/pagesX/addEmp.ejs');
+	} else {
+		await window_.loadURL('file://' + __dirname + '/pagesX/login.ejs');
+	}
+
 
 	ipcMain.on('alert', (event, message) => {
 		const result = dialog.showMessageBoxSync({
 			title: message.title ?? "Hii",
 			type: 'info',
 			// buttons: ['OK'],
-			detail : message.message,
+			detail: message.message,
 		});
 	})
 

@@ -1,171 +1,324 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Employee Registration</title>
-        <style>
-            div {
-                padding: 3px;
-            }
 
-            label {
-                display: inline-block;
-            }
+<head>
+    <title>Employee Registration</title>
+    <style>
+        div {
+            padding: 3px;
+        }
 
-            input[type="text"],
-            input[type="email"],
-            select,
-            input[type="checkbox"] {
-                width: 100%;
-            }
-        </style>
+        label {
+            display: inline-block;
+        }
 
-        <%- include('./comp/head.ejs') %>
-    </head>
+        input[type="text"],
+        input[type="email"],
+        select,
+        input[type="checkbox"] {
+            width: 100%;
+        }
+    </style>
 
-    <body style="overflow-x: hidden !important; background-color: #f0f0f0;">
-        <div class="bootstrap-wrapper">
-            <div class="row container">
-                <div class="col-md-7">
-                    <fieldset>
-                        <legend>Payroll Information</legend>
-                        <table>
-                            <tr>
-                                <td>
-                                    <label for="payroll">Payroll:</label>
-                                </td>
-                                <td>
-                                    <select>
-                                        <option>5 - Incredible!</option>
-                                        <option>4 - Great!</option>
-                                        <option selected>3 - Pretty good</option>
-                                        <option>2 - Not so great</option>
-                                        <option>1 - Unfortunate</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="branch">Branch:</label>
-                                </td>
-                                <td>
-                                    <select>
-                                        <option>5 - Incredible!</option>
-                                        <option>4 - Great!</option>
-                                        <option selected>3 - Pretty good</option>
-                                        <option>2 - Not so great</option>
-                                        <option>1 - Unfortunate</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                </div>
-                <div class="col-md-5">
-                    hello
-                </div>
+    <%- include('./comp/head.ejs') %>
+</head>
+
+<body style="overflow-x: hidden !important; background-color: #f0f0f0;">
+    <div class="bootstrap-wrapper">
+        <div class="row container">
+            <div class="col-md-7">
+                <fieldset>
+                    <legend>Payroll Information</legend>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="payroll">Payroll:</label>
+                            </td>
+                            <td>
+                                <select id="payroll" name="payroll"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="branch">Branch:</label>
+                            </td>
+                            <td>
+                                <select id="branch" name="branch"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
             </div>
-            <div class="row container">
-                <div class="col-md-7">
+            <div class="col-md-5">
+                hello
+            </div>
+        </div>
+        <div class="row container">
+            <div class="col-md-7">
+                <fieldset>
+                    <legend>Employee Information</legend>
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <label for="firstname">First Name</label>
+                                <input type="text" id="firstname" name="f_name" />
+                            </td>
+                            <td colspan="2">
+                                <label for="lasttname">Last Name</label>
+                                <input type="text" id="lasttname" name="l_name" />
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                DOB :
+                            </td>
+                            <td>
+                                <input type="text" id="dob" name="dob" placeholder="DD-MM-YYYY" autocomplete="off" />
+                            </td>
+                            <td>
+                                DOJ :
+                            </td>
+                            <td>
+                                <input type="text" id="doj" name="doj" placeholder="DD-MM-YYYY" autocomplete="off" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Gender:
+                            </td>
+                            <td>
+                                <select name="gender">
+                                    <option value="M" selected>Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="O">Other</option>
+                                </select>
+                            </td>
+                            <td>
+                                Collar:
+                            </td>
+                            <td>
+                                <select name="emp_type">
+                                    <option value="BC" selected>Blue Collar</option>
+                                    <option value="GC">Grey Collar</option>
+                                    <option value="WC">White Collar</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width: 100%; margin-top: 15px;">
+                        <tr>
+                            <td>
+                                <label for="firstname">Unique Identification UID :</label>
+                                <input type="text" id="uid" name="aaddharcode" placeholder="XXXX XXXX XXXX"
+                                    autocomplete="off" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <blockquote
+                                    style="background: #fffeed; padding: 10px; margin: 0; border: 1px solid #ccc;">Make
+                                    sure that the Unique Identification UID is not registered in our records before.
+                                </blockquote>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="col-md-5">
+                <div class="col-md-12">
                     <fieldset>
-                        <legend>Employee Information</legend>
-                        <table>
-                            <tr>
-                                <td colspan="2">
-                                    <label for="firstname">First Name</label>
-                                    <input type="text" id="firstname" />
-                                </td>
-                                <td colspan="2">
-                                    <label for="lasttname">Last Name</label>
-                                    <input type="text" id="lasttname" />
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    DOB :
-                                </td>
-                                <td>
-                                    <input type="text" id="dob" name="dob" placeholder="DD-MM-YYYY" autocomplete="off" />
-                                </td>
-                                <td>
-                                    DOJ :
-                                </td>
-                                <td>
-                                    <input type="text" id="doj" name="doj" placeholder="DD-MM-YYYY" autocomplete="off" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Gender :
-                                </td>
-                                <td>
-                                    <select>
-                                        <option value="M" selected>Male</option>
-                                        <option value="F">Female</option>
-                                        <option value="O">Other</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    Collar :
-                                </td>
-                                <td>
-                                    <select>
-                                        <option value="BC" selected>Blue Collar</option>
-                                        <option value="GC">Grey Collar</option>
-                                        <option value="WC">White Collar</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                        <table style="width: 100%; margin-top: 15px;">
-                            <tr>
-                                <td>
-                                    <label for="firstname">Unique Identification UID :</label>
-                                    <input type="text" id="uid" name="uid" placeholder="XXXX XXXX XXXX" autocomplete="off" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <blockquote style="background: #fffeed; padding: 10px; margin: 0; border: 1px solid #ccc;">Make sure that the Unique Identification UID is not registered in our records before.</blockquote>
-                                </td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                </div>
-                <div class="col-md-5">
-                    <div class="col-md-12">
-                        <fieldset>
-                            <legend>ESS and Policy</legend>
-                            <div class="raw">
-                                <table>
-                                    <tr>
-                                        <td><input type="checkbox" id="ess" /><label for="ess">allow employee to access ESS portal</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" id="leave" /><label for="leave">employee will able to apply leave on ESS portal</label></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="raw">
-                                <label for="mobile1">Mobile Number :</label>
-                                <input type="text" id="mobile1" name="mobile" />
+                        <legend>ESS and Policy</legend>
+                        <div class="raw">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="ess" />
+                                        <label for="ess">allow employee to access ESS portal</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="leave" />
+                                        <label for="leave">employee will able to apply leave on ESS portal</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="raw">
+                            <label for="mobile1">Mobile Number :</label>
+                            <input type="text" id="mobile1" name="mobile" />
 
-                                <label for="mobile2">Confirm Mobile Number :</label>
-                                <input type="text" id="mobile2" name="mobile" />
-                            </div>
-                            <br />
-                            <div class="raw">
-                                <label for="email">Email Address :</label>
-                                <input type="text" id="email" name="email" aria-describedby="balloon-password"/>
-                            </div>
-                        </fieldset>
-                    </div>
+                            <label for="mobile2">Confirm Mobile Number :</label>
+                            <input type="text" id="mobile2" name="confirm_mobile" />
+                        </div>
+                        <br />
+                        <div class="raw">
+                            <label for="email">Email Address :</label>
+                            <input type="text" id="email" name="email" aria-describedby="balloon-password" />
+                        </div>
+                    </fieldset>
                 </div>
             </div>
         </div>
-        <form></form>
+        <div class="row container">
+            <button onclick="addEmp(event, this)">Save</button>
+        </div>
+    </div>
+
+    <%- include('./comp/script.ejs') %>
+
         <script>
-           
+
+            function addEmp(event, e) {
+                event.preventDefault();
+                if ($("input[name='mobile']").val() !== $("input[name='confirm_mobile']").val()) {
+                    alert("Mobile number and confirm mobile number should be same");
+                    return;
+                }
+                const contractor = $("select[name='payroll']").val();
+                const branch = $("select[name='branch']").val();
+                const type = $("select[name='emp_type']").val();
+
+                if (contractor == null || contractor == undefined || contractor == "" || contractor == 0) {
+                    alert("Please select payroll name")
+                    return false
+                }
+                if (branch == null || branch == undefined || branch == "" || branch == 0) {
+                    alert("Please select branch name")
+                    return false
+                }
+                if (type == null || type == undefined || type == "" || type == 0) {
+                    alert("Please select employee type")
+                    return false
+                }
+                let payload_data = JSON.stringify({
+                    mobile: $("input[name='mobile']").val(),
+                    f_name: $("input[name='f_name']").val(),
+                    l_name: $("input[name='l_name']").val(),
+                    dob: $("input[name='dob']").val(),
+                    doj: $("input[name='doj']").val(),
+                    payroll: contractor,
+                    branch: branch,
+                    aadhaar: $("input[name='aaddharcode']").val(),
+                    type: type
+                });
+
+                alert("employee add");
+
+                electron.ipcRenderer.invoke('axiosPost',{
+                    url: "<%= hrmsApi %>/hrms/addEmp?type=save",
+                    data: payload_data
+                }).then((res)=>{
+                    alert('hhhhh')
+                    alert(JSON.stringify(res));
+                    alert('hhhhh')
+                    if(res.code == 200){
+                        alert("employee add11111");
+                        window.close();
+                    }
+                })
+                return;
+
+                $.ajax({
+                    url: "<%= hrmsApi %>/hrms/addEmp?type=check",
+                    type: 'POST',
+                    contentType: "application/json",
+                    data: payload_data,
+                    beforeSend: function () {
+                        $(e).attr('disabled', 'disabled');
+                    },
+                    complete: function () {
+                        $(e).removeAttr('disabled');
+                    },
+                    success: function (data) {
+                        if (data.response == "exist") {
+                            if (confirm(data.message)) {
+                                $.ajax({
+                                    url: "/hrms/addEmp?type=save",
+                                    type: "POST",
+                                    contentType: "application/json",
+                                    cache: false,
+                                    data: payload_data,
+                                    success: function (data) {
+                                        if (data.code == "200") {
+                                            $("input[name='mobile'],input[name='confirm_mobile'],input[name='f_name'],input[name='l_name'],input[name='dob']")
+                                                .val("")
+                                            toastr[data.status](data.message);
+                                        } else {
+                                            for (const property in data.message) {
+                                                toastr[data.status](data.message[property]);
+                                                return false;
+                                            }
+                                        }
+                                    },
+                                });
+                            }
+                        } else if (data.response == "notexist") {
+                            $.ajax({
+                                url: "/hrms/addEmp?type=save",
+                                type: 'POST',
+                                contentType: "application/json",
+                                data: payload_data,
+                                success: function (data) {
+                                    if (data.code == "200") {
+                                        $("input[name='mobile'],input[name='confirm_mobile'],input[name='f_name'],input[name='l_name'],input[name='dob']")
+                                            .val("")
+                                        toastr[data.status](data.message)
+                                    } else {
+                                        for (const property in data.message) {
+                                            toastr[data.status](data.message[property]);
+                                            return false;
+                                        }
+                                    }
+                                },
+                            });
+                        } else {
+                            for (const property in data.message) {
+                                toastr[data.status](data.message[property]);
+                                return false;
+                            }
+                        }
+                    }
+                });
+            }
+
+            $(document).ready(function () {
+
+                electron.ipcRenderer.invoke('axiosPost', {
+                    url: "<%= hrmsApi %>/hrms/fetch_contractor",
+                    data: {}
+                }).then((data) => {
+                    $.each(data, function (key, value) {
+                        $("select[name='payroll']").append(
+                            $("<option></option>").attr("value", value.id).text(value.text)
+                        )
+                    })
+                });
+
+
+                $("select[name='payroll']").change(function () {
+                    $("select[name='branch']").empty();
+                    electron.ipcRenderer.invoke('axiosPost', {
+                        url: "<%= hrmsApi %>/hrms/v2/utills/fetchBranch",
+                        data: { contractor: $("select[name='payroll']").val() }
+                    }).then((data) => {
+
+                        var len = data.data.length;
+                        for (var i = 0; i < len; i++) {
+                            $("select[name='branch']").append(
+                                $("<option></option>").attr("value", data.data[i].id).text(data.data[i].text)
+                            );
+                        }
+
+                    })
+                })
+
+
+            });// Ready document
+
+
         </script>
-    </body>
+</body>
+
 </html>

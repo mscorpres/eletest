@@ -1,10 +1,6 @@
 const { contextBridge, ipcRenderer } = require('electron');
-const io = require('socket.io-client');
-
-
 
 contextBridge.exposeInMainWorld('electron', {
-  io: io,
   socketUrl: `http://localhost:${process.env.SOCKET_PORT}`,
   ipcRenderer: {
     send: (channel, data) => {
@@ -13,8 +9,11 @@ contextBridge.exposeInMainWorld('electron', {
     },
     on: (channel, func) => {
       ipcRenderer.on(channel, (event, ...args) => func(...args))
+    },
+    invoke : async (channel, data) => {
+      return await ipcRenderer.invoke(channel, data);
     }
-  }
+  },
 })
 
 

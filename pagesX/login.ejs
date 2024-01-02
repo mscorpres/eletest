@@ -84,7 +84,8 @@
                     </div>
                     <div
                         style="width: 60%;margin-left: -170px;display: flex;justify-content: space-between;color:rgb(68, 111, 154)">
-                        <button style="width: 50%;" class="btn btn-primary  border">Login</button>
+                        <button style="width: 50%;" class="btn btn-primary  border"
+                            onclick="login(this , event)">Login</button>
                         <button style="width: 50%;" class="btn btn-light">Forget Password</button>
                     </div>
                 </div>
@@ -95,8 +96,58 @@
             </form>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="<%= baseurl %>/assets/win7/jquery.js"></script>
     <script>
+
+        $(document).ready(async function () {
+
+            electron.ipcRenderer.send('setStorage', { key: 'token', value: 'xyz' });
+
+            console.log(await electron.ipcRenderer.invoke('getStorage', 'user'));
+        })
+
+        function login(ele, event) {
+            event.preventDefault();
+
+            var username = $('#username').val();
+            var password = $('#Password').val();
+
+            $.ajax({
+                url: "<%= hrmsApi %>/hrmslogin/hrSignin",
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({ username: username, password: password }),
+                cache: false,
+                timeout: 10000,
+                beforeSend: function () {
+
+                },
+                success: function (data) {
+                    alert(JSON.stringify(data))
+                    if (data.code == 200) {
+                        alert("login successfull")
+                        electron.ipcRenderer.send('setStorage', { key: 'user', value: data.data });
+                        electron.ipcRenderer.send('setStorage', { key: 'isLogin', value: true });
+                        // window.location.href = '<%= baseurl %>/pagesX/addEmp.ejs';
+                        return false;
+                    } else if (data.code == 500) {
+                        alert("login failed")
+                    } else {
+                        window.location.reload();
+                        return false;
+                    }
+                },
+                error: function (e) {
+                    alert("login failed2")
+                }
+            });
+
+        }
+
+
+
         function closepage() {
             $('#hide1').hide();
         }
