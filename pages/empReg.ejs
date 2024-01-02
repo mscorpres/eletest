@@ -206,81 +206,18 @@
 
                 alert("employee add");
 
-                electron.ipcRenderer.invoke('axiosPost',{
+                electron.ipcRenderer.invoke('axiosPost', {
                     url: "<%= hrmsApi %>/hrms/addEmp?type=save",
                     data: payload_data
-                }).then((res)=>{
-                    alert('hhhhh')
-                    alert(JSON.stringify(res));
-                    alert('hhhhh')
-                    if(res.code == 200){
-                        alert("employee add11111");
+                }).then((res) => {
+                    if (res.code == 200) {
                         window.close();
+                    }
+                    else {
+                        alert(res.message.msg)
                     }
                 })
                 return;
-
-                $.ajax({
-                    url: "<%= hrmsApi %>/hrms/addEmp?type=check",
-                    type: 'POST',
-                    contentType: "application/json",
-                    data: payload_data,
-                    beforeSend: function () {
-                        $(e).attr('disabled', 'disabled');
-                    },
-                    complete: function () {
-                        $(e).removeAttr('disabled');
-                    },
-                    success: function (data) {
-                        if (data.response == "exist") {
-                            if (confirm(data.message)) {
-                                $.ajax({
-                                    url: "/hrms/addEmp?type=save",
-                                    type: "POST",
-                                    contentType: "application/json",
-                                    cache: false,
-                                    data: payload_data,
-                                    success: function (data) {
-                                        if (data.code == "200") {
-                                            $("input[name='mobile'],input[name='confirm_mobile'],input[name='f_name'],input[name='l_name'],input[name='dob']")
-                                                .val("")
-                                            toastr[data.status](data.message);
-                                        } else {
-                                            for (const property in data.message) {
-                                                toastr[data.status](data.message[property]);
-                                                return false;
-                                            }
-                                        }
-                                    },
-                                });
-                            }
-                        } else if (data.response == "notexist") {
-                            $.ajax({
-                                url: "/hrms/addEmp?type=save",
-                                type: 'POST',
-                                contentType: "application/json",
-                                data: payload_data,
-                                success: function (data) {
-                                    if (data.code == "200") {
-                                        $("input[name='mobile'],input[name='confirm_mobile'],input[name='f_name'],input[name='l_name'],input[name='dob']")
-                                            .val("")
-                                        toastr[data.status](data.message)
-                                    } else {
-                                        for (const property in data.message) {
-                                            toastr[data.status](data.message[property]);
-                                            return false;
-                                        }
-                                    }
-                                },
-                            });
-                        } else {
-                            for (const property in data.message) {
-                                toastr[data.status](data.message[property]);
-                                return false;
-                            }
-                        }
-                    }
-                });
             }
 
             $(document).ready(function () {

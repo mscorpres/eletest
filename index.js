@@ -14,7 +14,7 @@ const store = new Store();
 require('./utils/helper.js');
 
 const ejse = require('ejs-electron')
-ejse.data('baseurl', 'file://' + __dirname)
+ejse.data('baseurl', 'file://' + __dirname.replace(/\\/g, '/'))
 ejse.data('hrmsApi', "http://localhost:3001")
 
 
@@ -77,7 +77,7 @@ const createMainWindow = async () => {
 	// await window_.loadFile(path.join(__dirname, 'index.html'));
 
 	if (store.get('isLogin') === true) {
-		await window_.loadURL('file://' + __dirname + '/pagesX/addEmp.ejs');
+		await window_.loadURL('file://' + __dirname + '/pagesX/dashboard.ejs');
 	} else {
 		await window_.loadURL('file://' + __dirname + '/pagesX/login.ejs');
 	}

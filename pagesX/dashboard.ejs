@@ -13,7 +13,8 @@
                         <div class="d-flex">
 
                             <h1>Dashboard</h1>
-                            <button onclick="logout()" >LOgout</button>
+                            <br><br>
+                            <button class="btn btn-outline-danger btn-sm " onclick="logout()" >Logout</button>
 
                         </div>
 
@@ -32,7 +33,7 @@
         <script>
             function logout(){
                 electron.ipcRenderer.invoke('logout').then((result) => {
-                    // window.location.href = '<%= baseurl %>/pagesX/login.ejs';
+                    window.location = '<%= baseurl %>/pagesX/login.ejs';
                 }).catch((err) => {
                     
                 });

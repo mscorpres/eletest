@@ -23,7 +23,7 @@ ipcMain.handle('logout', (event, key) => {
 
 const axiosInstance = axios.create({
     headers: {
-        "x-csrf-token": store.get("user").token,
+        "x-csrf-token": store.get("user")?.token,
         "Accept": "application/json",
         "Content-Type": "application/json",
     },

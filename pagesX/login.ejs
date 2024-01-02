@@ -127,10 +127,9 @@
                 success: function (data) {
                     alert(JSON.stringify(data))
                     if (data.code == 200) {
-                        alert("login successfull")
                         electron.ipcRenderer.send('setStorage', { key: 'user', value: data.data });
                         electron.ipcRenderer.send('setStorage', { key: 'isLogin', value: true });
-                        // window.location.href = '<%= baseurl %>/pagesX/addEmp.ejs';
+                        window.location = '<%= baseurl %>/pagesX/dashboard.ejs';
                         return false;
                     } else if (data.code == 500) {
                         alert("login failed")
