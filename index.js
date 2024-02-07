@@ -77,7 +77,8 @@ const createMainWindow = async () => {
 	// await window_.loadFile(path.join(__dirname, 'index.html'));
 
 	if (store.get('isLogin') === true) {
-		await window_.loadURL('file://' + __dirname + '/pagesX/dashboard.ejs');
+		// await window_.loadURL('file://' + __dirname + '/pagesX/dashboard.ejs');
+		await window_.loadURL('file://' + __dirname + '/pages/emp.ejs');
 	} else {
 		await window_.loadURL('file://' + __dirname + '/pagesX/login.ejs');
 	}

@@ -43,7 +43,10 @@
                     console.log("connected!!!!!!");
                 });
 
-                socket.emit("generate_report_list", { "otherdata": JSON.stringify({ period: "01-11-2023 - 30-11-2023", type: "emp_savior", payroll: "321963" }) });
+                // socket.emit("generate_report_list", { "otherdata": JSON.stringify({ period: "01-11-2023 - 30-11-2023", type: "emp_savior", payroll: "321963" }) });
+                socket.emit("generate_report_list", JSON.stringify({ "otherdata": { "period": "01-01-2024 - 31-01-2024", "type": "savior_attendance_sync" } }));
+
+
 
             }
 
@@ -51,12 +54,12 @@
 
             socket.on("progress_update", (data) => {
                 console.log(data);
-                document.querySelector('.animate div').style.width = data.percentage + '%';
+                document.querySelector('.animate div').style.width = data.Progress + '%';
                 document.querySelector('#recordsProcessed').innerHTML = data.recordsProcessed;
-                document.querySelector('#totalRecords').innerHTML = data.totalRecords;
-                document.querySelector('#remainingTime').innerHTML = data.remainingTime;
+                document.querySelector('#totalRecords').innerHTML = data.total_records;
+                document.querySelector('#remainingTime').innerHTML = data.remaining_time;
 
-                if (data.recordsProcessed == data.totalRecords) {
+                if (data.recordsProcessed == data.total_records) {
                     electron.ipcRenderer.send("alert", { message: "Attendance Processed Successfully" })
                 }
 

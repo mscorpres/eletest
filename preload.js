@@ -1,7 +1,8 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electron', {
-  socketUrl: `http://localhost:${process.env.SOCKET_PORT}`,
+  // socketUrl: `http://localhost:${process.env.SOCKET_PORT}`,
+  socketUrl: `http://172.16.2.85:5001`,
   ipcRenderer: {
     send: (channel, data) => {
       ipcRenderer.send(channel, data);

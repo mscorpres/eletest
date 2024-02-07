@@ -163,6 +163,7 @@
         </div>
         <div class="row container">
             <button onclick="addEmp(event, this)">Save</button>
+            <span class="loader animate" style="display: none;" aria-label="Processing your request"></span>
         </div>
     </div>
 
@@ -206,10 +207,14 @@
 
                 alert("employee add");
 
+                $(".loader").show();
+                $(e).prop("disabled", true);
                 electron.ipcRenderer.invoke('axiosPost', {
                     url: "<%= hrmsApi %>/hrms/addEmp?type=save",
                     data: payload_data
                 }).then((res) => {
+                    $(".loader").hide();
+                    $(e).prop("disabled", false);
                     if (res.code == 200) {
                         window.close();
                     }
@@ -226,6 +231,9 @@
                     url: "<%= hrmsApi %>/hrms/fetch_contractor",
                     data: {}
                 }).then((data) => {
+                    $("select[name='payroll']").append(
+                            $("<option></option>").attr("value", "--").text("Select Payroll")
+                        )
                     $.each(data, function (key, value) {
                         $("select[name='payroll']").append(
                             $("<option></option>").attr("value", value.id).text(value.text)
