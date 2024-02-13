@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const { app, BrowserWindow, Menu, dialog, ipcMain, screen } = require('electron');
+const { app, BrowserWindow, Menu, dialog, ipcMain, screen, shell } = require('electron');
 /// const {autoUpdater} = require('electron-updater');
 const { is } = require('electron-util');
 const unhandled = require('electron-unhandled');
@@ -34,6 +34,53 @@ process.env.SOCKET_PORT = 5001;
 app.setAppUserModelId('com.company.AppName');
 
 let mainWindow;
+
+// 
+
+if (process.defaultApp) {
+	if (process.argv.length >= 2) {
+		app.setAsDefaultProtocolClient('hrms', process.execPath, [path.resolve(process.argv[1])])
+	}
+} else {
+	app.setAsDefaultProtocolClient('hrms')
+}
+
+const gotTheLock = app.requestSingleInstanceLock();
+
+if (!gotTheLock) {
+	app.quit();
+} else {
+	app.on('second-instance', (event, commandLine, workingDirectory) => {
+		// Someone tried to run a second instance, we should focus our window.
+		if (mainWindow) {
+			if (mainWindow.isMinimized()) mainWindow.restore()
+			mainWindow.focus()
+		}
+
+		if (commandLine.length > 1) {
+			let froUrl = commandLine.pop().slice(0, -1).slice(7, -1)
+			let pageId = froUrl.split('=')[0]
+
+			console.log("--------------------", pageId)
+
+			require('./utils/openFromUrl.js')(pageId)
+
+
+		}
+
+	})
+
+	// Create mainWindow, load the rest of the app, etc...
+	app.whenReady().then(() => {
+		createWindow()
+	})
+
+	app.on('open-url', (event, url) => {
+		dialog.showErrorBox('Welcome Back', `You arrived from: ${url}`)
+	})
+}
+
+// 
 
 
 const createMainWindow = async () => {
@@ -124,15 +171,15 @@ app.on('before-quit', () => {
 
 })
 
-app.on('second-instance', () => {
-	if (mainWindow) {
-		if (mainWindow.isMinimized()) {
-			mainWindow.restore();
-		}
+// app.on('second-instance', () => {
+// 	if (mainWindow) {
+// 		if (mainWindow.isMinimized()) {
+// 			mainWindow.restore();
+// 		}
 
-		mainWindow.show();
-	}
-});
+// 		mainWindow.show();
+// 	}
+// });
 
 app.on('window-all-closed', () => {
 	if (!is.macos) {
@@ -158,6 +205,20 @@ app.on('activate', async () => {
 	// mainWindow.webContents.executeJavaScript(`document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`);
 	require("./utils/childWindow.js");
 })();
+
+// Handle window controls via IPC
+// ipcMain.on('shell:open', () => {
+
+// 	console.log("open", __dirname);
+
+// 	const pageDirectory = __dirname.replace('app.asar', 'app.asar.unpacked')
+// 	const pagePath = path.join('file://', pageDirectory, 'pages/emp.ejs')
+// 	shell.openExternal(pagePath)
+
+// 	console.log("pagePath", pagePath);
+// })
+
+
 
 
 /*New Update Available*/
